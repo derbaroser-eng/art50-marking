@@ -23,7 +23,7 @@ transition deadline (**2026-12-02** for systems placed on the market before
 
 ## Test
 
-    python -m unittest test_art50 -v   # 13 acceptance tests, exit 0
+    python -m unittest test_art50 -v   # 14 acceptance tests, exit 0
 
 Includes negative cases: unmarked files fail verify, tampered sidecars fail,
 re-marking never duplicates packets.

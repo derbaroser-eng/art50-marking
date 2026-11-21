@@ -43,7 +43,7 @@ relationship; not a conformity certificate.
 - [ ] Sidecars record UTC timestamp + generator version.
 - [ ] Keep verify logs (command, file, exit code, date) as evidence.
 - [ ] Re-run the suite after pipeline changes:
-      `python -m unittest test_art50 -v` (13 tests, exit 0).
+      `python -m unittest test_art50 -v` (14 tests, exit 0).
 
 ## 5. Deployer text notice (Art. 50(4))
 

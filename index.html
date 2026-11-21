@@ -51,7 +51,7 @@ text notice, ready to fill and show to your users.</div>
 python marking.py verify marked.jpg   # exit 0 = MARKED, 1 = NOT MARKED
 python marking.py sidecar output.mp3  # hash-bound manifest + verify</pre>
 <h2>Verified, not promised</h2>
-<p>The pack ships with <strong>13 acceptance tests</strong> (<code>test_art50.py</code>),
+<p>The pack ships with <strong>14 acceptance tests</strong> (<code>test_art50.py</code>),
 including the negative cases: unmarked files must fail verification, a one-byte
 tamper must break the sidecar hash, re-marking must never duplicate packets.
 The suite runs green (exit 0) on Python 3.14 with the standard library alone.</p>
@@ -65,7 +65,7 @@ relationship; not a conformity certificate. Sources: Regulation (EU) 2024/1689
 Art. 50; Regulation (EU) 2026/1744 (Art. 111(4) transition); IPTC
 DigitalSourceType vocabulary. Built with AI assistance.</p>
 <p class="note">Need a dated evidence report for a whole pipeline instead?
-See the <a href="https://derbaroser-eng.github.io/art50-pack/">Art.50(2) Evidence Report</a>.</p>
+See the <a href="https://derbaroser-eng.github.io/art50-conform/">Art.50(2) Evidence Report</a>.</p>
 </footer>
 </body>
 </html>

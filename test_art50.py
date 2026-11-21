@@ -191,6 +191,25 @@ class PackTests(unittest.TestCase):
             self.assertIn(f, page, "thanks page does not serve " + f)
         self.assertNotRegex(page, r"__[A-Z]+__")
 
+    def test_14_every_absolute_link_resolves(self):
+        """A published page must not send a buyer to a 404 (footer cross-link)."""
+        import urllib.error
+        import urllib.request
+        hrefs = set()
+        for name in ("index.html", "thanks.html"):
+            page = (ROOT / name).read_text(encoding="utf-8")
+            hrefs.update(re.findall(r'href="(https://[^"]+)"', page))
+        self.assertTrue(hrefs, "no absolute links found to check")
+        for url in sorted(hrefs):
+            req = urllib.request.Request(
+                url, headers={"User-Agent": "Mozilla/5.0 (acceptance-gate)"})
+            try:
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    code = resp.status
+            except urllib.error.HTTPError as e:
+                code = e.code
+            self.assertEqual(code, 200, "dead link on published page: " + url)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
