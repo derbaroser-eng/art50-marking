@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Art.50(2) Marking Readiness Pack - mark AI outputs before 2 Dec 2026</title>
+<meta name="description" content="EUR29 one-time pack: stdlib Python snippet that machine-readably marks AI-generated images and files per EU AI Act Art.50(2), plus self-audit checklist and disclosure template.">
+<style>
+body{font-family:system-ui,sans-serif;max-width:820px;margin:0 auto;padding:0 1rem;line-height:1.6;color:#1a202c}
+header{padding:2.5rem 0 1rem}h1{font-size:1.9rem;line-height:1.25;margin:.2rem 0}
+.deadline{display:inline-block;background:#fff5f5;border:1px solid #fc8181;color:#c53030;border-radius:6px;padding:.3rem .7rem;font-weight:600;font-size:.95rem}
+.price{border:2px solid #2b6cb0;border-radius:10px;padding:1.2rem;margin:1.2rem 0;text-align:center}
+.price .amt{font-size:2rem;font-weight:700}
+a.cta{display:inline-block;background:#2b6cb0;color:#fff;font-weight:700;padding:.8rem 2rem;border-radius:8px;text-decoration:none;margin-top:.6rem}
+a.cta:hover{background:#2c5282}
+code,pre{background:#f7fafc;border:1px solid #e2e8f0;border-radius:6px}
+code{padding:.1rem .3rem}pre{padding:.8rem;overflow-x:auto;font-size:.9rem}
+.card{border:1px solid #cbd5e0;border-radius:8px;padding:1rem;margin:.6rem 0}
+.note{font-size:.9rem;color:#4a5568}footer{border-top:1px solid #e2e8f0;margin-top:2rem;padding:1rem 0 2rem}
+</style>
+</head>
+<body>
+<header>
+<span class="deadline">Transition deadline: 2 December 2026</span>
+<h1>Mark your AI outputs machine-readably - before the Art. 50(2) deadline</h1>
+<p>The EU AI Act requires synthetic audio, image, video and text to be marked
+as artificially generated in a machine-readable way. Systems placed on the
+market before 2 August 2026 have until <strong>2026-12-02</strong> to comply
+(Art. 111(4), Regulation (EU) 2026/1744). New systems have no grace period.</p>
+</header>
+<div class="price">
+<div class="amt">EUR 29 <span class="note">one-time</span></div>
+<p>Marking Readiness Pack: implementation snippet + self-audit checklist +
+deployer disclosure template. Instant download after payment.</p>
+<a class="cta" href="https://buy.stripe.com/4gMcN88U2bAscP721y4ko0V">Buy the pack - EUR 29</a>
+<p class="note">Secure checkout by Stripe. Instant download after payment.</p>
+</div>
+<h2>What is in the pack</h2>
+<div class="card"><strong>1. marking.py</strong> - stdlib-only Python, zero dependencies.
+JPEG: APP1 XMP packet with IPTC DigitalSourceType <code>trainedAlgorithmicMedia</code>.
+PNG: CRC-correct <code>iTXt</code> XMP chunk. Any other file: sha256-bound
+<code>.art50.json</code> sidecar. Idempotent re-marking, read-back verification,
+CLI with exit codes you can pipe into CI.</div>
+<div class="card"><strong>2. checklist.md</strong> - self-audit checklist mapped to the
+four Art. 50(2) properties: effective, interoperable, robust, reliable - with the
+exact commands and the evidence to retain.</div>
+<div class="card"><strong>3. disclosure-template.md</strong> - the Art. 50(4) deployer
+text notice, ready to fill and show to your users.</div>
+<h2>How it works</h2>
+<pre>python marking.py mark input.jpg marked.jpg
+python marking.py verify marked.jpg   # exit 0 = MARKED, 1 = NOT MARKED
+python marking.py sidecar output.mp3  # hash-bound manifest + verify</pre>
+<h2>Verified, not promised</h2>
+<p>The pack ships with <strong>13 acceptance tests</strong> (<code>test_art50.py</code>),
+including the negative cases: unmarked files must fail verification, a one-byte
+tamper must break the sidecar hash, re-marking must never duplicate packets.
+The suite runs green (exit 0) on Python 3.14 with the standard library alone.</p>
+<h2>Delivery</h2>
+<p>After payment you are redirected straight to the download page - the three
+files plus the test suite, served from the public repository. No email wait,
+no account needed. MIT-licensed snippet: embed it in your own products.</p>
+<footer>
+<p class="note">Engineering aid, <strong>not legal advice</strong>. No lawyer-client
+relationship; not a conformity certificate. Sources: Regulation (EU) 2024/1689
+Art. 50; Regulation (EU) 2026/1744 (Art. 111(4) transition); IPTC
+DigitalSourceType vocabulary. Built with AI assistance.</p>
+<p class="note">Need a dated evidence report for a whole pipeline instead?
+See the <a href="https://derbaroser-eng.github.io/art50-pack/">Art.50(2) Evidence Report</a>.</p>
+</footer>
+</body>
+</html>

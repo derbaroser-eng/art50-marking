@@ -1,0 +1,18 @@
+{
+  "product": "art50-marking",
+  "stripe_product_id": "prod_VfRUMOqKhX2JfB",
+  "stripe_price_id": "price_1Ue6bvV05gWq3LvXzCHhCBlO",
+  "payment_link_id": "plink_1Ue6bwV05gWq3LvXOqWLXtfN",
+  "url": "https://buy.stripe.com/4gMcN88U2bAscP721y4ko0V",
+  "amount_eur": 29.0,
+  "currency": "eur",
+  "mode": "live",
+  "after_completion": {
+    "redirect": {
+      "url": "https://derbaroser-eng.github.io/art50-marking/thanks.html"
+    },
+    "type": "redirect"
+  },
+  "api_verified_at": "2026-11-21T05:13:16+00:00",
+  "evidence": "GET /v1/payment_links expand line_items.data.price -> unit_amount=2900 currency=eur"
+}

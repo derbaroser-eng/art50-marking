@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thank you - Art.50(2) Marking Readiness Pack</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:760px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1a202c}
+.card{border:1px solid #cbd5e0;border-radius:8px;padding:1rem;margin:.75rem 0}
+a.dl{font-weight:600;color:#2b6cb0}code,pre{background:#f7fafc;border:1px solid #e2e8f0;border-radius:6px}
+code{padding:.1rem .3rem}pre{padding:.75rem;overflow-x:auto}.note{font-size:.9rem;color:#4a5568}
+</style>
+</head>
+<body>
+<h1>Payment received - your pack is ready</h1>
+<p>Thank you for buying the <strong>Art.50(2) Marking Readiness Pack</strong>.
+Download the three artifacts below - served directly from this repository,
+no email, no waiting:</p>
+<div class="card"><a class="dl" href="marking.py" download>marking.py</a> -
+stdlib-only Python: JPEG/PNG XMP marking (IPTC <code>trainedAlgorithmicMedia</code>),
+hash-bound sidecars for other formats, verify mode. Run <code>python marking.py</code> for usage.</div>
+<div class="card"><a class="dl" href="checklist.md" download>checklist.md</a> -
+self-audit checklist mapped to the four Art. 50(2) properties, with the
+2026-12-02 transition date.</div>
+<div class="card"><a class="dl" href="disclosure-template.md" download>disclosure-template.md</a> -
+deployer text-notice template for Art. 50(4), with filling guide.</div>
+<h2>Quickstart</h2>
+<pre>python marking.py mark input.jpg marked.jpg
+python marking.py verify marked.jpg   # exit 0 = MARKED
+python marking.py sidecar output.mp3  # writes output.mp3.art50.json
+python -m unittest test_art50 -v      # 13 acceptance tests</pre>
+<p class="note">Also here: <a href="test_art50.py">test_art50.py</a>,
+<a href="checkout.json">checkout.json</a> (public Stripe record),
+<a href="README.md">README.md</a>.</p>
+<p class="note">Engineering aid, not legal advice. No lawyer-client relationship;
+not a conformity certificate. Questions: open an issue in this repository.</p>
+<p><a href="index.html">Back to the offer page</a></p>
+</body>
+</html>
