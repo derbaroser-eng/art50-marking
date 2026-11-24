@@ -174,7 +174,12 @@ def mark_png(data, xmp=None):
 def read_xmp_png(data):
     for typ, body in _png_chunks(data):
         if _is_xmp_itxt(typ, body):
-            return body.split(b"\x00", 4)[4].decode("utf-8", errors="replace")
+            # iTXt = keyword\0 + compression_flag + compression_method +
+            # language_tag\0 + translated_keyword\0 + text. Our writer emits
+            # PNG_XMP_KEYWORD followed by exactly five NULs, then the XMP text.
+            # Splitting on fewer than five leaves a stray NUL before <?xpacket,
+            # which strict XML parsers reject.
+            return body.split(b"\x00", 5)[5].decode("utf-8", errors="replace")
     return None
 
 
