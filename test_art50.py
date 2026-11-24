@@ -121,6 +121,14 @@ class EngineTests(unittest.TestCase):
         self.assertFalse(self.m.is_marked(png_fixture()), "unmarked PNG read as marked")
         self.assertFalse(self.m.is_marked(b"plain text, not an image"))
 
+    def test_15_png_xmp_readback_is_byte_exact(self):
+        """A strict XML consumer must receive the exact packet, no stray NUL."""
+        xmp = self.m.build_xmp()
+        marked = self.m.mark_png(png_fixture(), xmp=xmp)
+        readback = self.m.read_xmp_png(marked)
+        self.assertEqual(readback, xmp, "readback corrupted (leading NUL byte)")
+        self.assertFalse(readback.startswith("\x00"), "NUL before <?xpacket")
+
     def test_07_sidecar_roundtrip_and_tamper(self):
         with tempfile.TemporaryDirectory() as tmp:
             f = Path(tmp) / "synthetic.txt"
